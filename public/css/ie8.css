@@ -1,0 +1,3 @@
+.btn_pack:before{content: none;}
+#bx_multi_content > button.btn_close{background: url(../images/member/btn_pop_close.png) center center no-repeat;}
+#bx_multi_content > button.btn_close:before, #bx_multi_content > button.btn_close:after{content: none;}

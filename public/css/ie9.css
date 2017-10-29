@@ -1,0 +1,5 @@
+
+.area_loading_circle .bx_progress{
+	border-width:0px;
+	background: url(/images/common/loading_for_ie3.gif) center center no-repeat;
+}

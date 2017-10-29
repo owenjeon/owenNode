@@ -1,0 +1,26 @@
+<% include inc/config.html %>
+<% include inc/top.html %>
+<% include inc/header.html %>
+<article id="container" class="main">
+    <section id="main_visual" class="owen_sect winHeit" data-minh="none">
+        <div class="bg bg_full"></div>
+        <div class="cont">
+            <h2>Hello.<%= session.username %></h2>
+            <h3>Here is Owen's Node Town.</h3>
+            <button class="btn_pack" onclick="location='/chat'">LET'S CHAT</button>
+<% if(session.username) {%>
+            <button class="btn_pack" onclick="location='/poker'">POKER GAME</button>
+<% }else{ %>
+            <button class="btn_pack" onclick="window.memberPop = new MemberPopFn()">POKER GAME(Need to login)</button>
+<% } %>
+        </div>
+    </section>
+<script>
+var layout = new OwenLayout('#wrap', {
+
+});
+
+
+</script>
+</article>
+<% include inc/footer.html %>

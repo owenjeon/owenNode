@@ -1,0 +1,63 @@
+<section id="bx_signup_step3">
+    <div class="con_type1">
+        <header class="hd_type1">
+            <h2>SIGN UP</h2>
+        </header>
+        <form action="signup" name="frmSignup" onsubmit="return false" method="post">
+            <div class="form_type2">
+                <ul>
+                    <li>
+                        <p><span>이메일(계정)</span></p>
+                        <input type="text" class="ipt w100p" id="userID" name="user_id" onchange="chkAccount.email(this)">
+                        <div class="bx_status"><span class="status"></span></div>
+                    </li>
+                    <li>
+                        <p><span>이름</span></p>
+                        <input type="text" class="ipt w100p" id="userName" name="user_name">
+                        <div class="bx_status"><span class="status"></span></div>
+                    </li>
+                    <li>
+                        <p><span>비밀번호</span></p>
+                        <div class="placeh">
+                            <input type="password" class="ipt w100p" id="user_pwd1" name="user_pwd1" onchange="chkAccount.pw01(this)">
+                            <label for="user_pwd1">규칙)영문, 숫자를 혼합하여 6~15자</label>
+                        </div>
+                        <div class="bx_status"><span class="status"></span></div>
+                    </li>
+                    <li>
+                        <p><span>비밀번호 확인</span></p>
+                        <div class="placeh">
+                            <input type="password" class="ipt w100p" id="user_pwd2" name="user_pwd2" onchange="chkAccount.pw02(this, '#user_pwd1')">
+                            <label for="user_pwd2">규칙)영문, 숫자를 혼합하여 6~15자</label>
+                        </div>
+                        <div class="bx_status"><span class="status"></span></div>
+                    </li>
+                </ul>
+            </div>
+            <div class="bot_btns">
+                <button class="btn_pack blue" onclick='submitSignup()'>SIGN UP</button>
+            </div>
+        </form>
+    </div>
+<script>
+function submitSignup(){
+    var frm = $(document.frmSignup);
+    if(frm.find('input[type=text], input[type=password]').filter(function(){return this.value === ''}).length > 0) {alert('모든 항목을 입력해주세요');return;}
+    if(frm.find('.bad').length) return;
+    var data = frm.serialize();
+    $.ajax({
+        url : '/signup',
+        type : 'POST',
+        dataType : 'json',
+        data : data,
+        success : function(res){
+            memberPop.addCont({url : "/users/signup_completed.html", data : {name : res.name}});
+        },
+        error : function (a, b, c) {
+            alert(a.responseText);
+        }
+    });
+}
+placeHFn.align();
+</script>
+</section>

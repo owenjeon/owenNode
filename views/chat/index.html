@@ -1,0 +1,40 @@
+<% include ../inc/config.html %>
+<% include ../inc/top.html %>
+<% include ../inc/header.html %>
+<link rel="stylesheet" href="/css/chat.css">
+<ul class="pages">
+    <li class="chat page">
+        <div class="chatArea">
+            <header>
+                <button class="btn_user_list">참여자 보기</button>
+                <div class="userList">
+                    <ul></ul>
+                </div>
+            </header>
+            <ul class="messages"></ul>
+        </div>
+        <input class="inputMessage" placeholder="Type here..." />
+    </li>
+    <li class="rooms page out_box">
+        <div class="room_area">
+            <header><h2>참여하실 방을 선택해주세요.</h2></header>
+            <div class="room_list">
+                <ul>
+                    <li class="new_room"><div class="in"><div class="in2"><form onsubmit="return false;"><input type="text" class="ipt w100p" id="roomName"><br><button>새로 만들기</button></form></div></div></li>
+                </ul>
+
+            </div>
+        </div>
+    </li>
+    <li class="login page">
+        <div class="form">
+            <h3 class="title">What's your nickname?</h3>
+            <form onsubmit="return false;">
+                <input class="usernameInput" type="text" maxlength="14" title="입력" />
+            </form>
+        </div>
+    </li>
+</ul>
+<script src="/js/socket.io.js"></script>
+<script src="/js/chat.js"></script>
+<% include ../inc/footer.html %>

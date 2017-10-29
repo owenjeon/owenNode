@@ -1,0 +1,66 @@
+@charset "utf-8";
+
+@media screen and (max-width:1580px){
+}
+@media screen and (max-width:1445px){
+}
+
+@media screen and (max-width:1200px){
+}
+@media screen and (max-width:1100px){
+}
+@media screen and (max-width:1000px){
+
+}
+
+@media screen and (max-width:960px){
+}
+
+@media screen and (max-width:900px){
+}
+
+
+@media screen and (max-width:800px){
+    .room_list > ul > li{width:50%;}
+}
+
+@media screen and  (max-width:767px){
+}
+
+@media screen and  (max-width:700px){
+}
+
+@media screen and (max-width:767px), screen and (max-height:600px){
+    .poker_playground .users .cards{width:200px}
+    .bx_me.users .cards{width:260px}
+    .pop_type1 > .inner{padding: 15px;}
+    .pop_choose_open_card{max-width: 90%;}
+}
+
+@media screen and  (max-width:639px){
+
+}
+
+@media screen and  (max-width:580px){
+}
+
+@media screen and  (max-width:540px){
+
+}
+
+@media screen and (max-width:540px), screen and (max-height:400px){
+    .poker_playground .users .profile > h3{font-size: 14px;}
+    .poker_playground .users .cards{width:130px}
+    .bx_me.users .cards{width:180px}
+}
+
+@media screen and  (max-width:470px){
+}
+
+@media screen and  (max-width:420px){
+
+}
+
+@media screen and  (max-width:340px){
+
+}

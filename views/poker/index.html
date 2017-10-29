@@ -1,0 +1,128 @@
+<% include ../inc/config.html %>
+<% include ../inc/top.html %>
+<% include ../inc/header.html %>
+<script src="/js/poker.js"></script>
+<article id="container">
+    <section id="poker_playground" class="poker_playground owen_sect winHeit" data-minh="none">
+        <div class="in">
+            <div class="bx_others">
+<% for(var j = 0 ; j < 4 ; j++){%>
+                <div class="users <%= (j%2 ? 'right' : 'left') %>">
+                    <div class="in">
+                        <% if(!(j%2)) {%><div class="profile"><div class="tag"><div class="first">선두</div></div><h3>Owen Jeon</h3></div><%}%>
+                        <div class="cards">
+                            <div class="in">
+                                <ul>
+                                </ul>
+                                <div class="made"></div>
+                            </div>
+                            <!-- <p>1000만 1122원</p> -->
+                        </div>
+                        <% if(j%2) {%><div class="profile"><div class="tag"><div class="first">선두</div></div><h3>Owen Jeon</h3></div><%}%>
+                    </div>
+                </div>
+<%}%>
+            </div>
+            <div class="bx_me users">
+                <div class="in">
+                    <div class="profile">
+                        <div class="tag">
+                            <div class="first">선두</div>
+                        </div>
+                        <h3>Owen Jeon</h3>
+                        <!-- <p>1000만 1122원</p> -->
+                    </div>
+                    <div class="cards">
+                        <div class="in">
+                            <ul>
+                            </ul>
+                            <div class="made"></div>
+                        </div>
+                    </div>
+                    <div class="btns">
+                        <ul>
+                            <li><button id="btn_give_card" class="btn_pack btn_mo">카드 받기</button></li>
+                            <li><button id="btn_call" class="btn_pack btn_mo" style="display:none;">콜(마지막)</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="pop_choose_open_card" class="pop_type1 pop_choose_open_card">
+        <div class="inner">
+            <header><h2>오픈할 카드를 선택해주세요.</h2></header>
+            <section class="mycards">
+                <ul></ul>
+            </section>
+        </div>
+    </section>
+    <section id="plzUseLanscape" class="plzUseLanscape">
+        <div class="alertBx">
+            <img src="/images/common/cat_eyes.png" alt="">
+            <h3>기기를 가로모드로 사용해주세요. :)</h3>
+        </div>
+    </section>
+<script>
+function connectEle(arr){
+    var bx = $("#poker_playground .users");
+    var bxArr = [bx.eq(2), bx.eq(0), bx.eq(1), bx.eq(3), bx.eq(4)]
+    for (var i = 0, len = arr.length; i < len; i++) {
+        var li = bxArr[i], imgBx = li.find('.cards > .in > ul');
+        li.find('.profile h3').text(arr[i].name);
+        arr[i].ele = li;
+        arr[i].imgBx = imgBx;
+    }
+}
+
+var layout = new OwenLayout('#wrap', {});
+
+Deck.prototype.gamer = [
+<%
+    var cnt = Math.max(query.gamerCnt || 4, 4), num = 0;
+    for(var i = 1 ; i <= 4 ; i++){
+        num++;
+%>
+    {name : 'com<%=num%>', cards : [], status : <%= (i <= cnt ? 1 : 0) %>, first : false, who : 'other'},
+<%
+    }
+%>
+    {name : '<%=session.username%>', cards : [], status : 1, first : true, who : 'me'}
+];
+connectEle(Deck.prototype.gamer);
+var deck = (new Deck()).shuffle();
+deck.give(3, 1, 0);
+//console.log(deck)
+
+
+//var hand = deck.deal(7).sort(Card.orderBySuit);
+// for(var i = 0 ; i < hand.length ; i++){
+// 	console.log(hand[i].toString());
+// }
+
+function onlyLandscapeMode(){
+    if(!mobileAndTabletcheck())return;
+    var t = $("#plzUseLanscape");
+    doOnOrientationChange(
+        function(){
+            if(t.hasClass('on')){
+                t.removeClass('on');
+                setTimeout(function(){t.css('display','none')},300)
+            }
+        },
+        function(){
+            if(!t.hasClass('on')){
+                t.css('display','block');
+                setTimeout(function(){t.addClass('on');},30);
+            }
+        }
+    )
+}
+
+window.addEventListener('orientationchange', onlyLandscapeMode);
+onlyLandscapeMode();
+
+
+</script>
+</article>
+<% include ../inc/footer.html %>

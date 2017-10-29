@@ -1,0 +1,46 @@
+<section id="bx_login">
+    <div class="con_type1">
+        <header class="hd_type1">
+            <h2>LOG IN</h2>
+        </header>
+        <form action="/login" name='frmLogin' onsubmit="return false;" method="post">
+            <div class="form_type1">
+                <ul>
+                    <li>
+                        <div class="placeh">
+                            <input type="text" class="ipt bd_hide w100p" name="user_id" id="user_id"><label for="user_id">ID</label>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="placeh">
+                            <input type="password" class="ipt bd_hide w100p" name="user_pwd" id="user_pwd"><label for="user_pwd">Password</label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="btns">
+                    <button class="btn_pack round blue2" onclick="submitLogin();">LOG IN</button>
+                </div>
+                <p class="signup">아이디가 없으신가요? <a href="javascript:;" onclick='memberPop.addCont({url : "/users/signup_step1.html"})' class="link">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+    <script>
+        function submitLogin(){
+            var data = $(document.frmLogin).serialize();
+            $.ajax({
+                url : '/login',
+                type : 'POST',
+                dataType : 'json',
+                data : data,
+                success : function(rep){
+                    location.reload();
+                },
+                error : function (a, b, c) {
+                    alert(a.responseText);
+                }
+            });
+        }
+        setChkAndRadio();
+        placeHFn.align();
+    </script>
+</section>

@@ -1,0 +1,189 @@
+/* Fix user-agent */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+html, input {
+  font-family:
+    "HelveticaNeue-Light",
+    "Helvetica Neue Light",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    "Lucida Grande",
+    sans-serif;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+  word-wrap: break-word;
+}
+
+/* Pages */
+
+.pages {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+.page {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;bottom: 0;left: 0;right: 0;
+}
+
+.out_box{margin:0 auto;max-width:1200px;}
+/* Login Page */
+
+.login.page {
+  background-color: #000;
+}
+
+.login.page .form {
+  height: 100px;
+  margin-top: -100px;
+  position: absolute;
+
+  text-align: center;
+  top: 50%;
+  width: 100%;
+}
+
+.login.page .form .usernameInput {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid #fff;
+  outline: none;
+  padding-bottom: 15px;
+  text-align: center;
+  width: 400px;
+}
+
+.login.page .title {
+  font-size: 200%;
+}
+
+.login.page .usernameInput {
+  font-size: 200%;
+  letter-spacing: 3px;
+}
+
+.login.page .title, .login.page .usernameInput {
+  color: #fff;
+  font-weight: 100;
+}
+
+/* Chat page */
+
+.chat.page {
+  display: none;
+}
+
+/* Font */
+
+.messages {
+  font-size: 110%;
+}
+
+.inputMessage {
+  font-size: 100%;
+}
+
+.log {
+  color: gray;
+  font-size: 70%;
+  margin: 5px;
+  text-align: center;
+}
+
+/* Messages */
+
+.chatArea {
+  height: 100%;
+  padding: 50px 0 60px;
+}
+.chatArea > header{height: 50px;position: absolute;left: 0;right: 0;top: 0;}
+.chatArea .btn_user_list{position: absolute;height:24px;line-height: 24px;color: #333;font-size: 14px;top: 0;bottom: 0;right: 10px;margin: auto;}
+.chatArea .btn_user_list:after{content: '';position: absolute;left: 0;right: 0;bottom: 0;height:1px;background-color: #666;}
+.messages {
+  height: 100%;
+  margin: 0;
+  overflow-y: scroll;
+  padding: 10px 20px 10px 20px;
+}
+
+.message.typing .messageBody {
+  color: gray;
+}
+
+.username {
+  font-weight: 700;
+  overflow: hidden;
+  padding-right: 15px;
+  text-align: right;
+}
+
+/* Input */
+
+.inputMessage {
+  border: 5px solid #000;
+  bottom: 0;
+  height: 50px;
+  left: 0;
+  outline: none;
+  padding-left: 10px;
+  position: absolute;
+  right: 0;
+  width: 100%;
+  -webkit-appearance:none;
+  font-size: 14px;
+}
+
+.userList{position: fixed;top: 0;bottom: 50px;left: 100%;width: 50%;min-width:250px;}
+
+.userList > ul{position: absolute;top: 0;bottom: 0;right: 0;width:100%;overflow-y: auto;background-color: #f1f1f1;padding:10px;box-shadow: -1px 0 10px -2px rgba(0,0,0,0.3);
+    padding-left:30px;font-size: 14px;
+    -webkit-transition: right .3s ease-in-out;
+    -o-transition: right .3s ease-in-out;
+    transition: right .3s ease-in-out;
+}
+.userList.on > ul{right: 100%;}
+.userList > ul > li{margin: 7px 0;list-style: decimal;}
+
+/*방 리스트*/
+.rooms{}
+.room_area{padding-top: 80px;height: 100%;overflow: hidden;}
+.room_area > header{position: absolute;left: 0;right: 0;top: 0;height:50px;border-bottom: 1px solid #333;line-height: 50px;}
+.room_area > header > h2{font-size: 16px;}
+.room_list{height:100%;overflow: hidden;overflow-y: auto;}
+.room_list > ul{margin:0 -5px;}
+.room_list > ul:after{content: '';display: table;clear: both;}
+.room_list > ul > li{float: left;width:33.333%;padding:0 5px;}
+.room_list > ul > li > .in{border:1px solid #999;box-shadow: 1px 1px 3px rgba(0,0,0,0.15);display: block;position: relative;height: 0;padding-bottom: 100%;}
+.room_list > ul > li > .in > .in2{display: block;position: absolute;top: 0;bottom: 0;left: 0;right: 0;white-space: nowrap;text-align: center;}
+.room_list > ul > li > .in > .in2:after{content: '';display: inline-block;height: 100%;margin-left: -4px;vertical-align: middle;}
+.room_list > ul > li > .in span,
+.room_list > ul > li.new_room > .in form{display: inline-block;white-space: normal;vertical-align: middle;width: 90%;overflow: hidden;}
+.room_list > ul > li.new_room > .in form{font-size: 14px;}
+.room_list > ul > li.new_room > .in form button{width: 100%;margin-top: 20px;height: 30px;font-size: 15px;color: #fff;background-color: #999;}
+
+.room_list > ul > li.new_room > .in{border-color: #e5e5e5;box-shadow: none;}
+
+@media screen and (max-width:800px){
+    .room_list > ul > li{width:50%;}
+}
